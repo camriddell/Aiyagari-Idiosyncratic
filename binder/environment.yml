@@ -1,5 +1,9 @@
+channels:
+  - conda-forge
+  - defaults
 dependencies:
   - python=3.8
+  - setuptools<58
   - pip
   - pip:
     - -r requirements.txt
