@@ -1,6 +1,5 @@
 # git+https://github.com/EconForge/dolark.py
 git+https://github.com/camriddell/dolark.py
-altair==4.2.2
 tabulate==0.9.0
 matplotlib==3.7.1
 numpy==1.22.4
