@@ -39,26 +39,35 @@ jobs:
 
   log-results:
     runs-on: ubuntu-latest
-    if: ${{ always() }}
+    if: ${{ success() }}
     needs: [build-conda, build-repo2docker]
     steps:
-      - uses: actions/checkout@v3
+      - run: |
+        echo 'all jobs success!'
 
-      - name: Get job statuses
-        id: get_status
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          statuses=""
-          for job in job1 job2 job3; do
-            status=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
-              https://api.github.com/repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/jobs )
-              # | jq -r --arg job_name "$job" '.jobs[] | select(.name==$job_name) | .conclusion')
-            statuses="$statuses $job:$status"
-          done
-          echo "name=statuses" >> "$GITHUB_OUTPUT"
+    if: ${{ failure() }}
+    needs: [build-conda, build-repo2docker]
+    steps:
+      - run: |
+        echo 'not all jobs success!'
+      # - uses: actions/checkout@v3
 
-      - name: Log build statuses
-        run: |
-          echo "Job Statuses: ${{ steps.get_status.outputs.statuses }}"
+      # - name: Get job statuses
+      #   id: get_status
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   run: |
+      #     statuses=""
+      #     for job in job1 job2 job3; do
+      #       status=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+      #         https://api.github.com/repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/jobs )
+      #         # | jq -r --arg job_name "$job" '.jobs[] | select(.name==$job_name) | .conclusion')
+      #       echo $status
+      #       statuses="$statuses $job:$status"
+      #     done
+      #     echo "name=statuses" >> "$GITHUB_OUTPUT"
+
+      # - name: Log build statuses
+      #   run: |
+      #     echo "Job Statuses: ${{ steps.get_status.outputs.statuses }}"
 
