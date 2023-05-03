@@ -38,10 +38,11 @@ jobs:
       #     NO_PUSH: 'true'
 
   log-success:
-    needs: [build-conda, build-repo2docker]
     runs-on: ubuntu-latest
+    needs: [build-conda, build-repo2docker]
     steps:
-      - run: |
+      - name: hi
+        run: |
         echo 'all jobs success!'
 
       # - uses: actions/checkout@v3
