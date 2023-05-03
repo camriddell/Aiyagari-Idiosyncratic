@@ -52,8 +52,8 @@ jobs:
           statuses=""
           for job in job1 job2 job3; do
             status=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
-              https://api.github.com/repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/jobs \
-              | jq -r --arg job_name "$job" '.jobs[] | select(.name==$job_name) | .conclusion')
+              https://api.github.com/repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/jobs )
+              # | jq -r --arg job_name "$job" '.jobs[] | select(.name==$job_name) | .conclusion')
             statuses="$statuses $job:$status"
           done
           echo "name=statuses" >> "$GITHUB_OUTPUT"
