@@ -55,6 +55,6 @@ jobs:
               | jq -r --arg job_name "$job" '.jobs[] | select(.name==$job_name) | .conclusion')
             statuses="$statuses $job:$status"
           done
-          echo "::set-output name=statuses::$statuses"
+          echo "{name}={statuses}" >> $GITHUB_OUTPUT
       # - name: Display job statuses
       #   run: echo "Job Statuses: ${{ steps.get_status.outputs.statuses }}"
