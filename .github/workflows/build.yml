@@ -45,13 +45,6 @@ jobs:
       - run: |
         echo 'all jobs success!'
 
-  log-failure:
-    runs-on: ubuntu-latest
-    needs: [build-conda, build-repo2docker]
-    if: ${{ failure() }}
-    steps:
-      - run: |
-        echo 'not all jobs success!'
       # - uses: actions/checkout@v3
 
       # - name: Get job statuses
