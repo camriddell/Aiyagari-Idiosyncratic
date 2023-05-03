@@ -58,5 +58,6 @@ jobs:
           done
           echo "name=statuses" >> $GITHUB_OUTPUT
 
-      - name: Display job statuses
-        run: echo "Job Statuses: ${{ steps.get_status.outputs.statuses }}"
+      - run: echo 'hi'
+      # - name: Display job statuses
+      #   run: echo "Job Statuses: ${{ steps.get_status.outputs.statuses }}"
