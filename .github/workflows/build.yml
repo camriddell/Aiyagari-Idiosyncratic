@@ -38,8 +38,8 @@ jobs:
       #     NO_PUSH: 'true'
 
   log-success:
-    runs-on: ubuntu-latest
     needs: [build-conda, build-repo2docker]
+    runs-on: ubuntu-latest
     steps:
       - run: |
         echo 'all jobs success!'
