@@ -56,8 +56,9 @@ jobs:
               | jq -r --arg job_name "$job" '.jobs[] | select(.name==$job_name) | .conclusion')
             statuses="$statuses $job:$status"
           done
-          echo "name=statuses" >> $GITHUB_OUTPUT
+          echo "name=statuses" >> "$GITHUB_OUTPUT"
 
+      - name: log build statuses
       - run: |
           echo "Job Statuses: ${{ steps.get_status.outputs.statuses }}"
 
