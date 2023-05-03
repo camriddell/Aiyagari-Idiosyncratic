@@ -43,6 +43,7 @@ jobs:
     needs: [build-conda, build-repo2docker]
     steps:
       - uses: actions/checkout@v3
+
       - name: Get job statuses
         id: get_status
         env:
@@ -56,5 +57,6 @@ jobs:
             statuses="$statuses $job:$status"
           done
           echo "name=statuses" >> $GITHUB_OUTPUT
+
       - name: Display job statuses
         run: echo "Job Statuses: ${{ steps.get_status.outputs.statuses }}"
