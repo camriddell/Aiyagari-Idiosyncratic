@@ -1,6 +1,6 @@
 ---
-remark-name: Aiyagari-Idiosyncratic # required 
-notebooks: # path to any notebooks within the repo - optional
+remark-name: Aiyagari-Idiosyncratic
+notebooks:
   - Aiyagari1994QJE.ipynb
 
 tags: # Use the relavent tag
@@ -8,7 +8,7 @@ tags: # Use the relavent tag
   - Notebook
 ---
 
-# AiyagariIdiosyncratic
+# Aiyagari-Idiosyncratic
 
 This is a Replication of S. Rao Aiyagari (1994).
 
